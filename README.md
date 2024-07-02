@@ -39,42 +39,40 @@ A detailed look at the data some interesting facts -
 The data provided encompasses 20 attributes, providing valuable insights about the potential customers. I took the following steps to understand that data and prepare it for data modeling - 
 
 - Identified features and target variables
-- Found the number of null values in the dataset - there were none.
-- Found the datatype of the different features and converted non-numeric features to numeric with the help of one-hot-encoding and LabelBinarizer
-- Scaled the data in preparation of modeling
-- Ran Principal Component analysis with scaled data. Plotted Explained Variance Ratio vs. Number of Components to reduce dimensions.
+- Found the number of null values in the dataset - there were a fair number of null values in occupation_type column.
+- Removed the column as part of data cleanup.
+
+Using the variance inflation factor, I have checked if the the features themselves are correlated - 
+
+![Alt text](images/6.png)
+
+1. Multicollinearity occurs when two or more predictor variables in the model are highly correlated.
+2. Variance Inflation Factor (VIF) is 1.0 for all columns except children, family_status and mobile which are highly correlated with each other.
+3. Hence, we need to drop children , family_status & mobile columns from our independent variable list to get best results.
+
+As a next step, I looked at the datatypes of the different features. I converted non-numeric features to numeric with the help of one-hot-encoding and LabelBinarizer
+
+After scaling the data, I have plotted the explained variance to number of components. It is clear that ~35 components explain 95% of all variance.
 
 ![Alt text](images/3.png)
 
-## Modeling Phase 1
+## Modeling 
 
-After making the necessary changes, I split the dataset into test and train sets. I then ran the different classifier models - Baseline, k-nearest neighbors, logistic regression, decision trees, and support vector machines with default hyper parameters: 
+After making the necessary changes, I split the dataset into test and train sets. I then ran the different classifier models with gridsearchcv to arrive at the right hyper parameters. Since the original dataset was so large, I used a fraction of the training and test datasets to arrive at the parameters.
+
+With the right set of hyperparameters, I trained the entire training dataset with the different classifiers- Logistic regression, decisiontree classifier, k-nearest neighbors, support vector machines, Random Forest Classifier, Neural Network Classifier and Naive Bayes Classifier. 
 
 ![Alt text](images/4.png)
 
 ## Observation:
 
-- Decision tree has the highest Test and training accuracy but training time is high.
-- KNN has the next highest Test and training accuracy with shortest training time.
-- SVC has the next highest Test and training accuracy but with highest training time.
-- Logistic regression has decent training and test accuracy with 3rd highest training time
+- Random Forest has the best ROC_AOC score but takes time to train.
+- DecisionTree classifier has the next highest score with good enough training time.
+- KNN is the next highest with the lowest training time.
+- SVC has the highest training time
 ​
-
-## Pre-processing Data - Phase 2
-
-Feature elimination: We can explore the features with correlation matrix to identify the most irrelevant features and drop them before modeling.
-
 ![Alt text](images/5.png)
 
-On re-running PCA with the dataset without the low correlation features, we see an opportunity to reduce dimensions further.
-
-![Alt text](images/6.png)
-
-## Modeling Phase 2 - Optimizing hyper parameters
-
-We can use gridsearchcv to explore the different hyperparameter values for the different classification models and arrive at the best results.
-
-![Alt text](images/7.png)
 
 ## Conclusion
 
