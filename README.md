@@ -73,6 +73,21 @@ With the right set of hyperparameters, I trained the entire training dataset wit
 ​
 ![Alt text](images/5.png)
 
+### ROC-AUC Curve and Score:
+
+Curve shape rises quickly: The curve rises quickly towards the top-left corner, indicating that the classifier is good at distinguishing between the positive and negative classes.
+High TPR, Low FPR: A higher TPR with a lower FPR means the classifier correctly identifies most of the positive instances while minimizing false positives.
+Value: The ROC AUC score, displayed in the legend (e.g., area = 0.82), is close enough to 1.0. This indicates good model performance.
+Interpretation: An ROC AUC score of 0.82 means that there is a 82% chance that the classifier will rank a randomly chosen positive instance higher than a randomly chosen negative one.
+
+![Alt text](images/6.png)
+
+### Feature Importance:
+
+Using Randomsearch Classifier's importance score, we can identify the feature importances. Age, Income, Working years and Months balance are the most important features that give good indication of credit of a customer. Owning a car, a realty and phone are the next set of important features.
+
+
+![Alt text](images/7.png)
 
 ## Conclusion
 
