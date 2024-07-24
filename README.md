@@ -1,6 +1,4 @@
-## What ?
-
-your goal is to compare the performance of the classifiers (k-nearest neighbors, logistic regression, decision trees, and support vector machines) you encountered in this section of the program. You will use a dataset related to the marketing of bank products over the telephone.
+## What 
 
 As part of this exercise, I have examined the dataset from Portuguese banking institution, which has information about a collection of the results of multiple marketing campaigns. Leveraging this data and by applying various classifier models, I have explored the factors that influence the decision to purchase a term deposit product. 
 
